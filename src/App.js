@@ -9,7 +9,7 @@ function App() {
   const [input, setInput] = React.useState("");
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
-  const [passcode, setPasscode] = React.useState("hello");
+
   const [message, setMessage] = React.useState(null);
 
   const submit = () => {
@@ -19,7 +19,7 @@ function App() {
     get(input).then((data) => {
       setLoading(false);
 
-      if (data.error) return setError("Passphrase is not correct");
+      if (!data || data.error) return setError("Passphrase is not correct");
       setCorrect(true);
 
       setMessage(data.message.message);
@@ -32,7 +32,7 @@ function App() {
     destroy(input).then((data) => {
       setLoading(false);
 
-      if (data.error) return setError("Could not destroy message");
+      if (!data || data.error) return setError("Could not destroy message");
       setCorrect(false);
       setMessage(null);
       setInput("");
