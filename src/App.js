@@ -41,9 +41,11 @@ function App() {
   };
 
   const close = () => {
+    setLoading(false);
     setCorrect(false);
     setMessage(null);
     setInput("");
+    setError(null);
   };
 
   if (correct)
