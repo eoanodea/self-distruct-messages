@@ -48,6 +48,10 @@ function App() {
     setError(null);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) submit();
+  };
+
   if (correct)
     return (
       <div className="App">
@@ -87,6 +91,7 @@ function App() {
             type="text"
             id="passcode"
             value={input}
+            onKeyDown={handleKeyDown}
             onChange={(v) => setInput(v.target.value.toLowerCase())}
             placeholder="Passphrase"
           />
