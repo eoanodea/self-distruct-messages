@@ -7,12 +7,6 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -28,11 +22,41 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  padding: 14px;
+  height: -webkit-fill-available;
+  font-size: 0.9em;
+  background-color: #e6cc5c;
+  border: none;
+  border-radius: 0 8px 8px 0;
+}
+
+.erase-button {
+  border-radius: 8px;
+}
+
+.message {
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  background-color: #3a3f46;
+}
+
+input {
+  border-radius: 8px 0 0 8px;
+  width: 80%;
+  font-size: 1em;
+  border: none;
+  height: -webkit-fill-available;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  height: 44px;
+}
+
+.error {
+  font-size: 0.8em;
+  color: #d94948;
 }
