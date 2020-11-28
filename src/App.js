@@ -2,23 +2,41 @@ import React from "react";
 import logo from "./logo.gif";
 import unlocked from "./unlocked.gif";
 import "./App.css";
+import { destroy, get } from "./api";
 
 function App() {
   const [correct, setCorrect] = React.useState(false);
   const [input, setInput] = React.useState("");
   const [error, setError] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
   const [passcode, setPasscode] = React.useState("hello");
+  const [message, setMessage] = React.useState(null);
 
   const submit = () => {
-    if (input !== passcode) return setError("Passphrase is not correct");
-
+    if (input === "") return setError("Passphrase cannot be blank");
+    setLoading(true);
     setError(null);
-    setCorrect(true);
+    get(input).then((data) => {
+      setLoading(false);
+
+      if (data.error) return setError("Passphrase is not correct");
+      setCorrect(true);
+
+      setMessage(data.message.message);
+    });
   };
 
   const erase = () => {
-    setCorrect(false);
-    setPasscode(Math.random().toString(36).substring(7));
+    setLoading(true);
+
+    destroy(input).then((data) => {
+      setLoading(false);
+
+      if (data.error) return setError("Could not destroy message");
+      setCorrect(false);
+      setMessage(null);
+      setInput("");
+    });
   };
 
   if (correct)
@@ -28,8 +46,8 @@ function App() {
           <img src={unlocked} className="App-logo" alt="logo" />
 
           <p>Secure Message:</p>
-          <p className="message">This is a secret message</p>
-          <button className="erase-button" onClick={erase}>
+          <p className="message">{message}</p>
+          <button disabled={loading} className="erase-button" onClick={erase}>
             Destroy
           </button>
         </header>
@@ -49,7 +67,9 @@ function App() {
             placeholder="Passphrase"
           />
 
-          <button onClick={submit}>Enter</button>
+          <button disabled={loading} onClick={submit}>
+            Enter
+          </button>
         </div>
         {error && <p className="error"> {error}</p>}
       </header>
