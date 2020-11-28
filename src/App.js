@@ -72,7 +72,7 @@ function App() {
             type="text"
             id="passcode"
             value={input}
-            onChange={(v) => setInput(v.target.value)}
+            onChange={(v) => setInput(v.target.value.toLowerCase())}
             placeholder="Passphrase"
           />
 
