@@ -40,6 +40,12 @@ function App() {
     });
   };
 
+  const close = () => {
+    setCorrect(false);
+    setMessage(null);
+    setInput("");
+  };
+
   if (correct)
     return (
       <div className="App">
@@ -52,8 +58,15 @@ function App() {
 
           <p>Secure Message:</p>
           <p className="message">{message}</p>
+
+          {error && <p className="error">Error: {error}</p>}
+
           <button disabled={loading} className="erase-button" onClick={erase}>
             Destroy
+          </button>
+
+          <button disabled={loading} className="erase-button" onClick={close}>
+            Close
           </button>
         </header>
       </div>

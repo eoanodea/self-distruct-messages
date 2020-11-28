@@ -22,17 +22,22 @@
   color: #61dafb;
 }
 
-.submit-button {
+button {
   padding: 5px 14px;
-  height: stretch;
   font-size: 0.9em;
   background-color: #e6cc5c;
   border: none;
-  border-radius: 0 8px 8px 0;
+  border-radius: 8px;
 }
 
 .erase-button {
-  border-radius: 8px;
+  margin: 20px;
+  padding: 14px;
+}
+
+.submit-button {
+  height: stretch;
+  border-radius: 0 8px 8px 0;
 }
 
 .message {
