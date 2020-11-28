@@ -25,7 +25,7 @@
       "react-app/jest"
     ]
   },
-  "proxy": "https://self-destruct-message-server.herokuapp.com",
+  "proxy": "https://secure.eoan.ie",
   "browserslist": {
     "production": [
       ">0.2%",

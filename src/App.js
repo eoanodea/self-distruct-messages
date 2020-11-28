@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.gif";
 import unlocked from "./unlocked.gif";
+import loadingLogo from "./loading.gif";
 import "./App.css";
 import { destroy, get } from "./api";
 
@@ -43,7 +44,11 @@ function App() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={unlocked} className="App-logo" alt="logo" />
+          <img
+            src={loading ? loadingLogo : unlocked}
+            className="App-logo"
+            alt="logo"
+          />
 
           <p>Secure Message:</p>
           <p className="message">{message}</p>
@@ -56,7 +61,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img
+          src={loading ? loadingLogo : logo}
+          className="App-logo"
+          alt="logo"
+        />
         <p>Enter your passphrase to continue</p>
         <div className="form-container">
           <input
@@ -67,7 +76,7 @@ function App() {
             placeholder="Passphrase"
           />
 
-          <button disabled={loading} onClick={submit}>
+          <button className="submit-button" disabled={loading} onClick={submit}>
             Enter
           </button>
         </div>
