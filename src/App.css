@@ -82,11 +82,29 @@ input {
   height: stretch;
 }
 
+.add-form {
+  border-radius: 8px;
+  width: 100%;
+  padding: 20px;
+  margin: 5px;
+}
+
 .form-container {
   display: flex;
   align-items: center;
   margin: 20px 0;
   height: 44px;
+}
+
+.add-form-container {
+  width: 80%;
+  flex-direction: column;
+}
+
+.add-form label {
+  text-align: left;
+  align-self: baseline;
+  margin: 15px;
 }
 
 .error {
